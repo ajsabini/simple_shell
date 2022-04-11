@@ -36,7 +36,7 @@ int check_space(char *buffer)
 }
 
 /**
- * buil_exit - cheque si es exit
+ * built_exit - cheque si es exit
  * @buffer: recibimos lo que escribieron
  * Return: 1 si escribieron exit, 0 si es otra cosa
  */
