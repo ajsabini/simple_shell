@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * commannd - as
+ * command - asads
  * @head: primer nodo
  * @path_concat: as
  * Return: as
@@ -23,7 +23,6 @@ int command(tokeniza *head, char *path_concat)
 	arg = malloc(i * sizeof(char *));
 	if (!arg)
 	{
-
 		perror("");
 		exit(98);
 	}
@@ -72,48 +71,19 @@ void _fsignal(int sig)
 
 int _fexit(char *buffer)
 {
-	char *exit = "exit";
+	char *exit = "exit", *tok = NULL;
 	int i = 0, j = 0;
 
-	for (i = 0; buffer[i]; i++)
-	{
-		if (buffer[i] == ' ')
-			;
-		else
-		{
-			if (buffer[i] == exit[j])
-			{
-				while (j < 5)
-				{
-					if (j == 4)
-					{
-						while (j < 5)
-						{
-							i++;
-							if (buffer[i] == '\0')
-								return (1);
-							if (buffer[i] != ' ')
-								return (0);
-						}
-					}
-					if (buffer[i] == exit[j])
-					{
-						i++;
-						j++;
-					}
-					else
-						return (0);
-				}
-			}
-			else
-				return (0);
-		}
-	}
+	tok = strtok(buffer, " ");
+
+	if (strcmp(exit, tok) == 0)
+		return (1);
+
 	return (0);
 }
 
 /**
- * cpy_eniron - copiamos el environ
+ * cpy_environ - copiamos el environ
  * Return: la copia del
  */
 
