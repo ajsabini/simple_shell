@@ -47,7 +47,7 @@ int built_exit(char *buffer)
 
 	status = _fexit(buffer);
 	if (status == 1)
-			return (1);
+		return (1);
 
 	return (0);
 
