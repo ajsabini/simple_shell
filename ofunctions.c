@@ -39,7 +39,7 @@ int command(tokeniza *head, char *path_concat)
 		perror("");
 	if (pid == 0)
 	{
-		execve(path_concat, arg, NULL);
+		execve(path_concat, arg, environ);
 	}
 	else
 	{
