@@ -71,18 +71,32 @@ void _fsignal(int sig)
 
 int _fexit(char *buffer)
 {
-	char *exit = "exit", *tok = NULL;
-	
-	if (buffer[0] != '\0')
-	{
-		tok = strtok(buffer, " ");
+	int i = 0, k = 0;
+	char *acomp = NULL;
 
-		if (_strcmp(exit, tok) == 0)
-		{
-			return (1);
-		}
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ')
+			k++;
 	}
 
+	acomp = (malloc(k + 1));
+	k = 0;
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ')
+		{	
+			acomp[k] = buffer[i];
+			k++;
+		}
+	}
+	acomp[k] = '\0';
+	if (_strcmp(acomp, "exit") == 0)
+	{
+		free(acomp);
+		return (1);
+	}
+	free(acomp);
 	return (0);
 }
 

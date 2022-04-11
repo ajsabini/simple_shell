@@ -69,16 +69,17 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 
 int _env(char *buffer)
 {
-	char *elenv = "env", *tok = NULL;
+	char *elenv = "env", *tok = NULL, *copia = NULL;
 
 	if (buffer[0] != '\0')
-	{
-		tok = strtok(buffer, " ");
+	{	
+		copia = _strdup(buffer);
+		tok = strtok(copia, " ");
 		if (_strcmp(tok, elenv) == 0)
 		{
 			return (1);
 		}
 	}
-
+	free(copia);
 	return (0);
 }

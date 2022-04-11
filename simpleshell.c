@@ -35,7 +35,7 @@ int main(void)
 		/*printf("3- %s\n", buffer);*/
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
-			exit(EXIT_SUCCESS);
+			exit(status);
 		}
 		built_env(buffer);
 		/*printf("4- %s\n", buffer);*/
@@ -45,6 +45,7 @@ int main(void)
 		/*printf("6- %s\n", buffer);*/
 		if(space != 0)
 		{	
+			/*printf("Buffer: %s\n", buffer);*/
 			tokenizer(buffer, &input, " ");
 			if (slash == 1)
 				status = check_directory(input);
