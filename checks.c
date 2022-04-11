@@ -51,18 +51,8 @@ int check_built(char *buffer)
 	{
 		for (i = 0; environ[i]; i++)
 		{
-			/*printf("%s\n", environ[i]);*/
 			write(1,environ[i],_strlen(environ[i]));
 			write(1, "\n",1);
-			/*write(1, "\n", 1);
-			write(1, environ[i], 1024);*/
-			/*for (j = 0; environ[i]; j++)
-			{
-				if ((environ[i][j] >= 'A' || environ[i][j] <= 'Z') && 
-						(environ[i -1][j -1] >= 'A' || environ[i -1][j -1] = 'Z'))
-					putchar('\n');
-				putchar(environ[i][j]);		
-			}*/
 		}
 	}
 
