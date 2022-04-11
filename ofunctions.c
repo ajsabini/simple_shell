@@ -22,7 +22,8 @@ int command(tokeniza *head, char *path_concat)
 	arg = malloc(i * sizeof(char *));
 	if (!arg)
 	{
-		perror("MY-SHELL");
+
+		perror("");
 		exit(98);
 	}
 	aux = head;
@@ -35,7 +36,7 @@ int command(tokeniza *head, char *path_concat)
 
 	pid = fork();	
 	if (pid == -1)
-		perror("MY-SHELL");
+		perror("");
 	if (pid == 0)
 	{
 		execve(path_concat, arg, NULL);
@@ -58,7 +59,7 @@ void _fsignal(int sig)
 {
 	if (SIGINT == sig)
 	{
-		dprintf(STDIN_FILENO, "\nOSHELL: ");
+		write(STDIN_FILENO, "\nOSHELL: ",9);
 	}
 }
 

@@ -17,13 +17,13 @@ int main()
 	while(EOF)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-			dprintf(1,"OSHELL: ");
+			write(1,"OSHELL: ",8);
 		do{
 			characters = getline(&buffer, &size, stdin);
 		} while(buffer[0] == '\n' && characters > 1);
 		if (characters == -1)
 		{
-			dprintf(1,"\n");
+			write(1,"\n",1);
 			break;
 		}
 		buffer[characters - 1] = '\0';

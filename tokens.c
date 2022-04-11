@@ -13,13 +13,13 @@ void add_node(tokeniza **head, char *s)
 	tokeniza *new;
 
 	if (s == NULL)
-		dprintf(1, "error al crear la lista\n");
+		write(1, "error al crear la lista\n", 27);
 	else
 	{
 		new = malloc(sizeof(tokeniza));
 		if (new == NULL)
 		{
-			dprintf(1, "error al crear la lisa\n");
+			write(1, "error al crear la lisa\n", 27);
 		}
 		else
 		{
