@@ -55,7 +55,6 @@ int built_exit(char *buffer)
 
 /**
  *  built_env - chequea si ingresaron env
- *  @buffer: lo que imngresaron
  *  Return: df
  */
 
