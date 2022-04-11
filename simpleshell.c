@@ -36,8 +36,7 @@ int main(void)
 		space = check_space(buffer);
 		slash = check_slash(buffer);
 		if (space != 0)
-		{
-			tokenizer(buffer, &input, " ");
+		{	tokenizer(buffer, &input, " ");
 			if (slash == 1)
 				status = check_directory(input);
 			else

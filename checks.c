@@ -65,6 +65,7 @@ void built_env(char *buffer)
 
 	status = _env(buffer);
 	if (status == 1)
+	{
 		for (i = 0; environ[i]; i++)
 		{
 			write(1, environ[i], _strlen(environ[i]));
