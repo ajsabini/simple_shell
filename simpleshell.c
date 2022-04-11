@@ -26,8 +26,7 @@ int main(void)
 				write(1, "\n", 1);
 			break;
 		}
-		buffer[characters - 1] = '\0';
-		change_tabs(buffer);
+		buffer[characters - 1] = '\0', change_tabs(buffer);
 		exitstatus = built_exit(buffer);
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
@@ -36,13 +35,14 @@ int main(void)
 		stenv = _env(buffer), space = check_space(buffer);
 		if (space != 0 && stenv != 1)
 		{	tokenizer(buffer, &input, " ");
-			slash = check_slash(input->s), dirs(&directorys, &pwd, &old_pwd);
+			slash = check_slash(input->s);
 			if (slash == 1)
 				status = check_directory(input);
 			else
+			{	dirs(&directorys, &pwd, &old_pwd);
 				status = check_files(directorys, input);
-			free_nodes(input);
-			input = NULL;
+			}
+			free_nodes(input), input = NULL;
 		}
 	}
 	free_all(buffer, old_pwd, pwd, directorys);
