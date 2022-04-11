@@ -72,12 +72,15 @@ void free_nodes(tokeniza *head)
 {
 	tokeniza *aux = head;
 	tokeniza *auxfree;
-
-	while (aux)
+	
+	if (head)
 	{
-		auxfree = aux;
-		aux = aux->next;
-		free(auxfree->s);
-		free(auxfree);
+		while (aux)
+		{
+			auxfree = aux;
+			aux = aux->next;
+			free(auxfree->s);
+			free(auxfree);
+		}
 	}
 }
