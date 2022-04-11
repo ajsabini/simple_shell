@@ -9,7 +9,7 @@ int main(void)
 {
 	char *buffer = NULL;
 	size_t size = 0;
-	int space = 0, status = 0, exitstatus = 0, slash = 0;
+	int space = 0, status = 0, exitstatus = 0, slash = 0, stenv = 0;
 	tokeniza *directorys = NULL, *pwd = NULL, *old_pwd = NULL, *input = NULL;
 	ssize_t characters;
 
@@ -38,16 +38,15 @@ int main(void)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(status);
 		}
-		built_env(buffer);
+		stenv = built_env(buffer);
 		/*printf("4- %s\n", buffer);*/
 		space = check_space(buffer);
-		/*printf("5- %s\n", buffer);*/
-		slash = check_slash(buffer);
 		/*printf("6- %s\n", buffer);*/
-		if(space != 0)
+		if(space != 0 && stenv != 1)
 		{	
 			/*printf("Buffer: %s\n", buffer);*/
 			tokenizer(buffer, &input, " ");
+			slash = check_slash(input->s);
 			if (slash == 1)
 				status = check_directory(input);
 			else

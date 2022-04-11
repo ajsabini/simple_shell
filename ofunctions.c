@@ -39,7 +39,11 @@ int command(tokeniza *head, char *path_concat)
 		perror("");
 	if (pid == 0)
 	{
-		execve(path_concat, arg, environ);
+		if (execve(path_concat, arg, environ) == -1)
+		{
+			perror("");
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{

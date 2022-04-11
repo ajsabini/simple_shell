@@ -56,10 +56,10 @@ int built_exit(char *buffer)
 /**
  *  built_env - chequea si ingresaron env
  *  @buffer: lo que imngresaron
- *  Return: void
+ *  Return: df
  */
 
-void built_env(char *buffer)
+int built_env(char *buffer)
 {
 	int status = 0, i = 0;
 
@@ -70,8 +70,10 @@ void built_env(char *buffer)
 		{
 			write(1, environ[i], _strlen(environ[i]));
 			write(1, "\n", 1);
+			return (1);
 		}
 	}
+	return (0);
 }
 
 /**
