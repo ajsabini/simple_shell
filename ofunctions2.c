@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * dirs -as
  * @directorys: as
@@ -10,13 +11,11 @@
 void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 {
 	int  i = 0;
-	char *path = NULL, *pwd_s = NULL, *old_pwd_s = NULL;
-	char *token_path = NULL;
+	char *path = NULL, *pwd_s = NULL, *old_pwd_s = NULL, *token_path = NULL;
 
 	old_pwd_s = get_oldpwd();
 	if (strcmp(old_pwd_s, "ERROR") != 0)
-	{
-		token_path = strtok(old_pwd_s, "=");
+	{	token_path = strtok(old_pwd_s, "=");
 		for (i = 0; token_path != NULL; i++)
 		{
 			if (i != 0)
@@ -26,8 +25,7 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 	}
 	path = get_path();
 	if (strcmp(path, "ERROR") != 0)
-	{
-		token_path = strtok(path, "=");
+	{	token_path = strtok(path, "=");
 		for (i = 0; token_path != NULL; i++)
 		{
 			if (i == 1)
@@ -37,8 +35,7 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 	}
 	pwd_s = get_pwd();
 	if (strcmp(pwd_s, "ERROR") != 0)
-	{
-		token_path = strtok(pwd_s, "=");
+	{	token_path = strtok(pwd_s, "=");
 		for (i = 0; token_path != NULL; i++)
 		{
 			if (i != 0)
@@ -46,9 +43,12 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 			token_path = strtok(NULL, "=");
 		}
 	}
-	free(old_pwd_s);
-	free(path);
-	free(pwd_s);
+	if (strcmp(old_pwd_s, "ERROR") != 0)
+		free(old_pwd_s);
+	if (strcmp(path, "ERROR") != 0)
+		free(path);
+	if (strcmp(pwd_s, "ERROR") != 0)
+		free(pwd_s);
 }
 
 /**
