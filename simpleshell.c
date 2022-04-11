@@ -9,8 +9,9 @@ int main(void)
 {
 	char *buffer = NULL;
 	size_t size = 0;
-	int space = 0, status = 0, exitstatus = 0, slash = 0, characters = 0;
+	int space = 0, status = 0, exitstatus = 0, slash = 0;
 	tokeniza *directorys = NULL, *pwd = NULL, *old_pwd = NULL, *input = NULL;
+	ssize_t characters;
 
 	dirs(&directorys, &pwd, &old_pwd);
 	signal(SIGINT, _fsignal);
