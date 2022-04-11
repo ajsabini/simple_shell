@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * dirs -as
  * @directorys: as
@@ -75,7 +74,6 @@ int _env(char *buffer)
 	if (buffer[0] != '\0')
 	{
 		tok = strtok(buffer, " ");
-		printf("%s\n", tok);
 		if (_strcmp(tok, elenv) == 0)
 		{
 			return (1);

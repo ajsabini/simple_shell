@@ -24,18 +24,25 @@ int main(void)
 		{	write(1, "\n", 1);
 			break;
 		}
-		buffer[_strlen(buffer - 1)] = '\0';
+		/*printf("0- %s\n", buffer);*/
+		buffer[characters - 1] = '\0';
+		/*printf("1- %s\n", buffer);*/
 		change_tabs(buffer);
+		/*printf("2- %s\n", buffer);*/
 		exitstatus = built_exit(buffer);
+		/*printf("3- %s\n", buffer);*/
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(EXIT_SUCCESS);
 		}
 		built_env(buffer);
+		/*printf("4- %s\n", buffer);*/
 		space = check_space(buffer);
+		/*printf("5- %s\n", buffer);*/
 		slash = check_slash(buffer);
-		if(space != 0 && buffer[0] != '\0')
-		{	printf("aaaaaaaa");
+		/*printf("6- %s\n", buffer);*/
+		if(space != 0)
+		{	
 			tokenizer(buffer, &input, " ");
 			if (slash == 1)
 				status = check_directory(input);
