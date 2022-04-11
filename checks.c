@@ -3,13 +3,13 @@
 /**
  * check_slash - chequea / para saber si es directorio
  * @buffer: lo que se ingreso
- * Return - si encontro / devuelve 1, sino 0
+ * Return: si encontro / devuelve 1, sino 0
 */
 
 int check_slash(char *buffer)
 {
 	int i = 0;
-	
+
 	for (i = 0; buffer[i]; i++)
 	{
 		if (buffer[i] == '/')
@@ -21,7 +21,7 @@ int check_slash(char *buffer)
 /**
  * check_space - chequea si hay espacios
  * @buffer: reibe lo que se ingreso
- * Return - 1 si hay algun arater distinto a espacio, sino 0
+ * Return: 1 si hay algun arater distinto a espacio, sino 0
  */
 int check_space(char *buffer)
 {
@@ -38,7 +38,7 @@ int check_space(char *buffer)
 /**
  * check_built - chequea si es una built-in, env o exit
  * @buffer: recibimos lo que escribieron
- * Return - 0 o 1
+ * Return: 0 o 1
  */
 
 int check_built(char *buffer)
@@ -51,8 +51,8 @@ int check_built(char *buffer)
 	{
 		for (i = 0; environ[i]; i++)
 		{
-			write(1,environ[i],_strlen(environ[i]));
-			write(1, "\n",1);
+			write(1, environ[i], _strlen(environ[i]));
+			write(1, "\n", 1);
 		}
 	}
 
@@ -70,7 +70,7 @@ int check_built(char *buffer)
 /**
  * change_tabs - as
  * @buffer: as
- * Return - void
+ * Return: void
  */
 
 void change_tabs(char *buffer)
@@ -79,10 +79,10 @@ void change_tabs(char *buffer)
 
 	for (i = 0; buffer[i]; i++)
 	{
-			if (buffer[i] == '	')
-			{
-						buffer[i] = ' ';
-					}
+		if (buffer[i] == '	')
+		{
+			buffer[i] = ' ';
 		}
+	}
 }
 

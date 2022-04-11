@@ -3,7 +3,7 @@
 /**
  * check_directory - chequea si existe el directorio
  * @input: string a evaluar
- * Return - lo que nos devuelve command
+ * Return: lo que nos devuelve command
  */
 
 int check_directory(tokeniza *input)
@@ -32,14 +32,14 @@ int check_directory(tokeniza *input)
  * check_files - chequea si puede ejecutar el comando
  * @directorys: los directorios
  * @input: el token
- * Return - lo que nos da command
+ * Return: lo que nos da command
 */
 int check_files(tokeniza *directorys, tokeniza *input)
 {
 	char *path_concat = NULL;
 	int status = 0;
 
-	path_concat =_concat(directorys, input);
+	path_concat = _concat(directorys, input);
 	if (strcmp(path_concat, "ERROR") == 0)
 		perror("");
 	else
@@ -50,16 +50,16 @@ int check_files(tokeniza *directorys, tokeniza *input)
 	return (status);
 }
 
-/*
+/**
  * regular_file - as
  * @path: as
- * Return - as
+ * Return: sa
  */
 
 int regular_file(char *path)
 {
 	struct stat path_stat;
-	stat(path, &path_stat);
-	return S_ISREG(path_stat.st_mode);
-}
 
+	stat(path, &path_stat);
+	return (S_ISREG(path_stat.st_mode));
+}

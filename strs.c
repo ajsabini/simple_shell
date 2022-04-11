@@ -28,7 +28,7 @@ char *_strdup(char *str)
 
 /**
  * _strlen - obtener el largo de un string
- * @s: el string
+ * @str: el string
  * Return: el largo del string
  */
 

@@ -39,7 +39,7 @@ char **cpy_environ();
 
 /*ofunctions2.c*/
 void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd);
-void free_all(char *buffer, tokeniza *old_pwd, tokeniza *pwd, tokeniza *directorys);
+void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct);
 int _env(char *buffer);
 
 /*stats.c*/
@@ -64,7 +64,7 @@ void free_nodes(tokeniza *head);
 /*whatis*/
 int check_directory(tokeniza *input);
 int check_files(tokeniza *directorys, tokeniza *input);
-int regular_file(char * path);
+int regular_file(char *path);
 
 #endif
 

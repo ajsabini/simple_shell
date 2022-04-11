@@ -5,13 +5,13 @@
  * @directorys: as
  * @pwd: as
  * @old_pwd: as
- * Return - sa
+ * Return: sa
 */
 
 void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 {
 	int  i = 0;
-    char *path = NULL, *pwd_s = NULL, *old_pwd_s = NULL;
+	char *path = NULL, *pwd_s = NULL, *old_pwd_s = NULL;
 	char *token_path = NULL;
 
 	old_pwd_s = get_oldpwd();
@@ -29,17 +29,17 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 	{
 		if (i == 1)
 			tokenizer(token_path, directorys, ":");
-		token_path = strtok(NULL,"=");
+		token_path = strtok(NULL, "=");
 	}
 
 	pwd_s = get_pwd();
 	token_path = strtok(pwd_s, "=");
-    for (i = 0; token_path != NULL; i++)
-    {
-   		if (i != 0)
-   				add_node(pwd, token_path);
-   		token_path = strtok(NULL, "=");
-   	}
+	for (i = 0; token_path != NULL; i++)
+	{
+		if (i != 0)
+			add_node(pwd, token_path);
+		token_path = strtok(NULL, "=");
+	}
 	free(old_pwd_s);
 	free(path);
 	free(pwd_s);
@@ -47,25 +47,25 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 
 /**
  * free_all - as
- * @buffer - as
- * @old_pwd - as
- * @pwd - as
- * @directorys - as
- * Return - void
+ * @buffer: as
+ * @o_p: as
+ * @pw: as
+ * @direct: as
+ * Return: void
  */
 
-void free_all(char *buffer, tokeniza *old_pwd, tokeniza *pwd, tokeniza *directorys)
+void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 {
 	free(buffer);
-	free_nodes(old_pwd);
-	free_nodes(pwd);
-	free_nodes(directorys);
+	free_nodes(o_p);
+	free_nodes(pw);
+	free_nodes(direct);
 }
 
 /**
  * _env - as
  * @buffer: as
- * Return - as
+ * Return: as
  */
 
 int _env(char *buffer)
@@ -106,7 +106,7 @@ int _env(char *buffer)
 			}
 			else
 				return (0);
-		}		
+		}
 	}
 	return (0);
 }

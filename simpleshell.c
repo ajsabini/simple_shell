@@ -2,10 +2,10 @@
 
 /**
  * main - simpleshell
- * Return - 0 si salio todo bien o el valor del error
+ * Return: 0 si salio todo bien o el valor del error
  */
 
-int main()
+int main(void)
 {
 	char *buffer = NULL;
 	size_t size = 0;
@@ -13,17 +13,16 @@ int main()
 	tokeniza *directorys = NULL, *pwd = NULL, *old_pwd = NULL, *input = NULL;
 
 	dirs(&directorys, &pwd, &old_pwd);
-	signal(SIGINT, _fsignal);	
-	while(EOF)
+	signal(SIGINT, _fsignal);
+	while (EOF)
 	{
 		if (isatty(STDIN_FILENO) == 1)
-			write(1,"OSHELL: ",8);
-		do{
+			write(1, "OSHELL: ", 8);
+		do {
 			characters = getline(&buffer, &size, stdin);
-		} while(buffer[0] == '\n' && characters > 1);
+		} while (buffer[0] == '\n' && characters > 1);
 		if (characters == -1)
-		{
-			write(1,"\n",1);
+		{	write(1, "\n", 1);
 			break;
 		}
 		buffer[characters - 1] = '\0';

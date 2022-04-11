@@ -75,9 +75,9 @@ void free_nodes(tokeniza *head)
 
 	while (aux)
 	{
-			auxfree = aux;
-			aux = aux->next;
-			free(auxfree->s);
-			free(auxfree);
-		}
+		auxfree = aux;
+		aux = aux->next;
+		free(auxfree->s);
+		free(auxfree);
+	}
 }

@@ -1,9 +1,10 @@
 #include "main.h"
 
-/* commannd - as
+/**
+ * commannd - as
  * @head: primer nodo
  * @path_concat: as
- * Return - as
+ * Return: as
  */
 
 int command(tokeniza *head, char *path_concat)
@@ -12,7 +13,7 @@ int command(tokeniza *head, char *path_concat)
 	int i = 0, status = 0;
 	tokeniza *aux = NULL;
 	char **arg = NULL;
-	
+
 	aux = head;
 	for (i = 0; aux; i++)
 	{
@@ -34,7 +35,7 @@ int command(tokeniza *head, char *path_concat)
 	}
 	arg[i] = NULL;
 
-	pid = fork();	
+	pid = fork();
 	if (pid == -1)
 		perror("");
 	if (pid == 0)
@@ -52,21 +53,21 @@ int command(tokeniza *head, char *path_concat)
 /**
  * _fsignal - captura la senial ctrl+c
  * @sig: la senial
- * Return - void
+ * Return: void
  */
 
 void _fsignal(int sig)
 {
-	if (SIGINT == sig)
+	if (sig == SIGINT)
 	{
-		write(STDIN_FILENO, "\nOSHELL: ",9);
+		write(STDIN_FILENO, "\nOSHELL: ", 9);
 	}
 }
 
 /**
  * _fexit - captura el exit y lo ejecuta
  * @buffer: lo que se ingreso
- * Return - int
+ * Return: int
  */
 
 int _fexit(char *buffer)
@@ -77,11 +78,11 @@ int _fexit(char *buffer)
 	for (i = 0; buffer[i]; i++)
 	{
 		if (buffer[i] == ' ')
-				;
+			;
 		else
 		{
 			if (buffer[i] == exit[j])
-			{	
+			{
 				while (j < 5)
 				{
 					if (j == 4)
@@ -92,7 +93,7 @@ int _fexit(char *buffer)
 							if (buffer[i] == '\0')
 								return (1);
 							if (buffer[i] != ' ')
-								return(0);
+								return (0);
 						}
 					}
 					if (buffer[i] == exit[j])
@@ -106,14 +107,14 @@ int _fexit(char *buffer)
 			}
 			else
 				return (0);
-		}		
+		}
 	}
-	return (0);	
+	return (0);
 }
 
 /**
  * cpy_eniron - copiamos el environ
- * Return - la copia del 
+ * Return: la copia del
  */
 
 char **cpy_environ()
@@ -122,8 +123,8 @@ char **cpy_environ()
 	char **envir;
 
 	for (i = 0; environ[i]; i++)
-	;
-	
+		;
+
 	envir = malloc(i * (sizeof(char *)));
 
 	for (i = 0; environ[i]; i++)
