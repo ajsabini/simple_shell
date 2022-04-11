@@ -10,7 +10,7 @@ char *get_pwd()
 	char *copy = NULL;
 	char *pathcompare = "PWD=";
 	int i = 0;
-	
+
 	if (environ)
 	{
 		for (i = 0; environ[i]; i++)
@@ -64,7 +64,7 @@ char *get_path()
 	int i = 0;
 
 	if (environ)
-	{	
+	{
 		for (i = 0; environ[i]; i++)
 		{
 			if (strncmp(environ[i], pathcompare, 5) == 0)

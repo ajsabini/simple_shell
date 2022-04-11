@@ -59,7 +59,7 @@ int built_exit(char *buffer)
  *  Return: df
  */
 
-void built_env()
+void built_env(void)
 {
 	int i = 0;
 

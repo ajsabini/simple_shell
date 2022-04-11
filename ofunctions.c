@@ -33,7 +33,6 @@ int command(tokeniza *head, char *path_concat)
 		aux = aux->next;
 	}
 	arg[i] = NULL;
-
 	pid = fork();
 	if (pid == -1)
 		perror("");
@@ -46,9 +45,7 @@ int command(tokeniza *head, char *path_concat)
 		}
 	}
 	else
-	{
 		wait(&status);
-	}
 	free(arg);
 	return (WEXITSTATUS(status));
 }
@@ -89,7 +86,7 @@ int _fexit(char *buffer)
 	for (i = 0; buffer[i]; i++)
 	{
 		if (buffer[i] != ' ')
-		{	
+		{
 			acomp[k] = buffer[i];
 			k++;
 		}

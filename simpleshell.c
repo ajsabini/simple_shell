@@ -21,7 +21,6 @@ int main(void)
 		do { characters = getline(&buffer, &size, stdin);
 		} while (buffer[0] == '\n' && characters > 1);
 		if (characters == -1)
-		{	
 			if (isatty(STDIN_FILENO) == 1)
 				write(1, "\n", 1);
 			break;
@@ -33,13 +32,10 @@ int main(void)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(status);
 		}
-		stenv = _env(buffer);
-		space = check_space(buffer);
+		stenv = _env(buffer), space = check_space(buffer);
 		if (space != 0 && stenv != 1)
-		{
-			tokenizer(buffer, &input, " ");
-			slash = check_slash(input->s);
-			dirs(&directorys, &pwd, &old_pwd); 
+		{	tokenizer(buffer, &input, " ");
+			slash = check_slash(input->s), dirs(&directorys, &pwd, &old_pwd);
 			if (slash == 1)
 				status = check_directory(input);
 			else
