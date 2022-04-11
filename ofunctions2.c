@@ -71,11 +71,10 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 int _env(char *buffer)
 {
 	char *elenv = "env", *tok = NULL;
-	int i = 0, j = 0, iguales = 0;
 
-	tok = strotk(buffer, " ");
+	tok = strtok(buffer, " ");
 
-	if (strcmp(buffer, elenv) == 0)
+	if (strcmp(tok, elenv) == 0)
 		return (1);
 
 	return (0);

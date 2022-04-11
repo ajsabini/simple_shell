@@ -72,7 +72,6 @@ void _fsignal(int sig)
 int _fexit(char *buffer)
 {
 	char *exit = "exit", *tok = NULL;
-	int i = 0, j = 0;
 
 	tok = strtok(buffer, " ");
 
