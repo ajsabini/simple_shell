@@ -72,12 +72,14 @@ int _env(char *buffer)
 {
 	char *elenv = "env", *tok = NULL;
 
-	tok = strtok(buffer, " ");
-	printf("%s\n", tok);
-	if (_strcmp(tok, elenv) == 0)
+	if (buffer)
 	{
-		free(tok);
-		return (1);
+		tok = strtok(buffer, " ");
+		printf("%s\n", tok);
+		if (_strcmp(tok, elenv) == 0)
+		{
+			return (1);
+		}
 	}
 
 	return (0);

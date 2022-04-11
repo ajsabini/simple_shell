@@ -18,14 +18,13 @@ int main(void)
 	{
 		if (isatty(STDIN_FILENO) == 1)
 			write(1, "OSHELL: ", 8);
-		do {
-			characters = getline(&buffer, &size, stdin);
+		do { characters = getline(&buffer, &size, stdin);
 		} while (buffer[0] == '\n' && characters > 1);
 		if (characters == -1)
 		{	write(1, "\n", 1);
 			break;
 		}
-		buffer[characters - 1] = '\0';
+		buffer[0] = '\0';
 		change_tabs(buffer);
 		exitstatus = built_exit(buffer);
 		if (exitstatus == 1)
@@ -35,8 +34,9 @@ int main(void)
 		built_env(buffer);
 		space = check_space(buffer);
 		slash = check_slash(buffer);
-		if (space != 0)
-		{	tokenizer(buffer, &input, " ");
+		space != 0 && buffer[0] != '\0')
+		{	printf("aaaaaaaa");
+			tokenizer(buffer, &input, " ");
 			if (slash == 1)
 				status = check_directory(input);
 			else

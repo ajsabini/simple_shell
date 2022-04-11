@@ -73,11 +73,14 @@ int _fexit(char *buffer)
 {
 	char *exit = "exit", *tok = NULL;
 
-	tok = strtok(buffer, " ");
-
-	if (_strcmp(exit, tok) == 0)
+	if (buffer)
 	{
-		return (1);
+		tok = strtok(buffer, " ");
+
+		if (_strcmp(exit, tok) == 0)
+		{
+			return (1);
+		}
 	}
 
 	return (0);
