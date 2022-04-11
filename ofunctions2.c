@@ -14,7 +14,7 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 	char *token_path = NULL;
 
 	old_pwd_s = get_oldpwd();
-	if (strcmp(old_pwd_s, "EEROR") != 0)
+	if (strcmp(old_pwd_s, "ERROR") != 0)
 	{
 		token_path = strtok(old_pwd_s, "=");
 		for (i = 0; token_path != NULL; i++)
