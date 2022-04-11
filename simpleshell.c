@@ -27,11 +27,12 @@ int main(void)
 		}
 		buffer[characters - 1] = '\0';
 		change_tabs(buffer);
-		exitstatus = check_built(buffer);
+		exitstatus = built_exit(buffer);
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(EXIT_SUCCESS);
 		}
+		built_env(buffer);
 		space = check_space(buffer);
 		slash = check_slash(buffer);
 		if (space != 0)

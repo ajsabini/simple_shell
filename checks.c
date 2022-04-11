@@ -36,35 +36,41 @@ int check_space(char *buffer)
 }
 
 /**
- * check_built - chequea si es una built-in, env o exit
+ * buil_exit - cheque si es exit
  * @buffer: recibimos lo que escribieron
- * Return: 0 o 1
+ * Return: 1 si escribieron exit, 0 si es otra cosa
  */
 
-int check_built(char *buffer)
+int built_exit(char *buffer)
+{
+	int status = 0;
+
+	status = _fexit(buffer);
+	if (status == 1)
+			return (1);
+
+	return (0);
+
+}
+
+/**
+ *  built_env - chequea si ingresaron env
+ *  @buffer: lo que imngresaron
+ *  Return: void
+ */
+
+void built_env(char *buffer)
 {
 	int status = 0, i = 0;
-	/*j = 0;*/
 
 	status = _env(buffer);
 	if (status == 1)
-	{
 		for (i = 0; environ[i]; i++)
 		{
 			write(1, environ[i], _strlen(environ[i]));
 			write(1, "\n", 1);
 		}
 	}
-
-	else
-	{
-		status = 0;
-		status = _fexit(buffer);
-		if (status == 1)
-			return (1);
-	}
-	return (0);
-
 }
 
 /**

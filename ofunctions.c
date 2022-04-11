@@ -76,7 +76,9 @@ int _fexit(char *buffer)
 	tok = strtok(buffer, " ");
 
 	if (_strcmp(exit, tok) == 0)
+	{
 		return (1);
+	}
 
 	return (0);
 }
