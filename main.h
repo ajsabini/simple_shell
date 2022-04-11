@@ -14,7 +14,7 @@ extern int errno;
 extern char **environ;
 
 /**
- * struct tokenizar - strut para guardar tokens
+ * struct tokenizar - struct para guardar tokens
  * @s: tokens
  * @next: siguiente nodo
  */
