@@ -1,32 +1,83 @@
 #include "main.h"
 
 /**
- * addnode - agregar un token
+ * add_node - agrega un token
  * @head: pasamos la direccion del head y lo recibe como doble puntero
- * @str: el token
- * Return - void
-*/
+ * @s: el token
+ * Return: void
+ */
 
-void addnode(tokeniza **head, char *str)
+void add_node(tokeniza **head, char *s)
 {
-	tokeniza *new = malloc(sizeof(tokeniza));
+	tokeniza *headaux = *head;
+	tokeniza *new;
 
-	new->str = str;
-	new->next = *head;
-	*head = new;
+	if (s == NULL)
+		dprintf(1, "error al crear la lista\n");
+	else
+	{
+		new = malloc(sizeof(tokeniza));
+		if (new == NULL)
+		{
+			dprintf(1, "error al crear la lisa\n");
+		}
+		else
+		{
+			new->s = strdup(s);
+			new->next = NULL;
+
+			if (s && *head)
+			{
+				for (; headaux->next;)
+				{
+					headaux = headaux->next;
+				}
+				new->next = NULL;
+				headaux->next = new;
+			}
+			else
+			{
+				*head = new;
+			}
+		}
+	}
 }
 
 /**
- * print_list - imprime la linked list de tokens
- * @head: el token
- * Return - void
-*/
+ * tokenizer - se encarga de tokenizar
+ * @env: dsdf
+ * @directorys: asd
+ * @delim: el delimitador para tokenizar
+ */
 
-void print_list(tokeniza *head)
+void tokenizer(char *env, tokeniza **directorys, const char *delim)
 {
-	if (head->next)
-		print_list(head->next);
+	char *path = NULL;
 
-	printf("head->str %s\n", head->str);
-	free(head);
+	path = strtok(env, delim);
+	while (path != NULL)
+	{
+		add_node(directorys, path);
+		path = strtok(NULL, delim);
+	}
+}
+
+/**
+ * free_nodes - liberamos la lista
+ * @head: primer nodo
+ * Return: void
+ */
+
+void free_nodes(tokeniza *head)
+{
+	tokeniza *aux = head;
+	tokeniza *auxfree;
+
+	while (aux)
+	{
+			auxfree = aux;
+			aux = aux->next;
+			free(auxfree->s);
+			free(auxfree);
+		}
 }
