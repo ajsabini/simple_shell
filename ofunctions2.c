@@ -74,7 +74,7 @@ int _env(char *buffer)
 
 	tok = strtok(buffer, " ");
 
-	if (strcmp(tok, elenv) == 0)
+	if (_strcmp(tok, elenv) == 0)
 		return (1);
 
 	return (0);

@@ -49,7 +49,7 @@ int get_stat(char *path_concat);
 /*strs.c*/
 char *_strdup(char *str);
 int _strlen(char *str);
-/*int _strcmp(char *s1, char *s2)*/
+int _strcmp(char *s1, char *s2);
 
 /*gets.c*/
 char *get_pwd();
