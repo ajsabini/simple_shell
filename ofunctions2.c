@@ -69,31 +69,13 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 
 int _env(char *buffer)
 {
-	int i = 0, k = 0;
-	char *acomp = NULL;
+	char *laenv = "env";
 	
-	for (i = 0; buffer[i]; i++)
-	{
-		if (buffer[i] != ' ')	
-			k++;
-	}	
-	acomp = (malloc(k + 1));	
-	k = 0;
-	for (i = 0; buffer[i]; i++)
-	{	
-		if (buffer[i] != ' ')
-		{
-			acomp[k] = buffer[i];	
-			k++;
-		}
-    }
-	acomp[k] = '\0';	
-	if (strcmp(acomp, "env") == 0)
-	{	
-		free(acomp);
+	if (strcmp(buffer, laenv) == 0 )
+	{			
 		built_env();
 		return (1);
 	}
-	free(acomp);
+
 	return (0);	
 }
