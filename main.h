@@ -29,7 +29,7 @@ typedef struct tokenizar
 int check_slash(char *buffer);
 int check_space(char *buffer);
 int built_exit(char *buffer);
-int built_env(char *buffer);
+void built_env();
 void change_tabs(char *buffer);
 
 /*ofunctions.c*/

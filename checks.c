@@ -59,21 +59,15 @@ int built_exit(char *buffer)
  *  Return: df
  */
 
-int built_env(char *buffer)
+void built_env()
 {
-	int status = 0, i = 0;
+	int i = 0;
 
-	status = _env(buffer);
-	if (status == 1)
+	for (i = 0; environ[i]; i++)
 	{
-		for (i = 0; environ[i]; i++)
-		{
-			write(1, environ[i], _strlen(environ[i]));
-			write(1, "\n", 1);
-			return (1);
-		}
+		write(1, environ[i], _strlen(environ[i]));
+		write(1, "\n", 1);
 	}
-	return (0);
 }
 
 /**
@@ -94,4 +88,3 @@ void change_tabs(char *buffer)
 		}
 	}
 }
-

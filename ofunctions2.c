@@ -89,8 +89,9 @@ int _env(char *buffer)
     }
 	acomp[k] = '\0';	
 	if (strcmp(acomp, "env") == 0)
-	{
+	{	
 		free(acomp);
+		built_env();
 		return (1);
 	}
 	free(acomp);

@@ -34,7 +34,7 @@ int main(void)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(status);
 		}
-		stenv = built_env(buffer);
+		stenv = _env(buffer);
 		space = check_space(buffer);
 		if (space != 0 && stenv != 1)
 		{
