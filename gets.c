@@ -10,16 +10,19 @@ char *get_pwd()
 	char *copy = NULL;
 	char *pathcompare = "PWD=";
 	int i = 0;
-
-	for (i = 0; environ[i]; i++)
+	
+	if (environ)
 	{
-		if (strncmp(environ[i], pathcompare, 4) == 0)
+		for (i = 0; environ[i]; i++)
 		{
-			copy = strdup(environ[i]);
-			return (copy);
+			if (strncmp(environ[i], pathcompare, 4) == 0)
+			{
+				copy = strdup(environ[i]);
+				return (copy);
+			}
 		}
-	}
 	copy = strdup(environ[i]);
+	}
 	return (copy);
 }
 
@@ -34,15 +37,18 @@ char *get_oldpwd()
 	char *pathcompare = "OLDPWD=";
 	int i = 0;
 
-	for (i = 0; environ[i]; i++)
+	if (environ)
 	{
-		if (strncmp(environ[i], pathcompare, 7) == 0)
+		for (i = 0; environ[i]; i++)
 		{
-			copy = strdup(environ[i]);
-			return (copy);
+			if (strncmp(environ[i], pathcompare, 7) == 0)
+			{
+				copy = strdup(environ[i]);
+				return (copy);
+			}
 		}
+		copy = strdup(environ[i]);
 	}
-	copy = strdup(environ[i]);
 	return (copy);
 }
 
@@ -57,14 +63,17 @@ char *get_path()
 	char *pathcompare = "PATH=";
 	int i = 0;
 
-	for (i = 0; environ[i]; i++)
-	{
-		if (strncmp(environ[i], pathcompare, 5) == 0)
+	if (environ)
+	{	
+		for (i = 0; environ[i]; i++)
 		{
-			copy = strdup(environ[i]);
-			return (copy);
+			if (strncmp(environ[i], pathcompare, 5) == 0)
+			{
+				copy = strdup(environ[i]);
+				return (copy);
+			}
 		}
+		copy = strdup(environ[i]);
 	}
-	copy = strdup(environ[i]);
 	return (copy);
 }

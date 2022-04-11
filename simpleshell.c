@@ -13,7 +13,6 @@ int main(void)
 	tokeniza *directorys = NULL, *pwd = NULL, *old_pwd = NULL, *input = NULL;
 	ssize_t characters;
 
-	dirs(&directorys, &pwd, &old_pwd);
 	signal(SIGINT, _fsignal);
 	while (EOF)
 	{
@@ -40,6 +39,7 @@ int main(void)
 		{
 			tokenizer(buffer, &input, " ");
 			slash = check_slash(input->s);
+			dirs(&directorys, &pwd, &old_pwd); 
 			if (slash == 1)
 				status = check_directory(input);
 			else

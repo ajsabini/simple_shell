@@ -14,30 +14,39 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 	char *token_path = NULL;
 
 	old_pwd_s = get_oldpwd();
-	token_path = strtok(old_pwd_s, "=");
-	for (i = 0; token_path != NULL; i++)
+	if (strcmp(old_pwd, "ERROR") != 0)
 	{
-		if (i != 0)
-			add_node(old_pwd, token_path);
-		token_path = strtok(NULL, "=");
+		token_path = strtok(old_pwd_s, "=");
+		for (i = 0; token_path != NULL; i++)
+		{
+			if (i != 0)
+				add_node(old_pwd, token_path);
+			token_path = strtok(NULL, "=");
+		}
 	}
 
 	path = get_path();
-	token_path = strtok(path, "=");
-	for (i = 0; token_path != NULL; i++)
+	if (strcmp(path, "ERROR") != 0)
 	{
-		if (i == 1)
-			tokenizer(token_path, directorys, ":");
-		token_path = strtok(NULL, "=");
+		token_path = strtok(path, "=");
+		for (i = 0; token_path != NULL; i++)
+		{
+			if (i == 1)
+				tokenizer(token_path, directorys, ":");
+			token_path = strtok(NULL, "=");
+		}
 	}
 
 	pwd_s = get_pwd();
-	token_path = strtok(pwd_s, "=");
-	for (i = 0; token_path != NULL; i++)
+	if (strcmp(pwd_s, "ERROR") != 0)
 	{
-		if (i != 0)
-			add_node(pwd, token_path);
-		token_path = strtok(NULL, "=");
+		token_path = strtok(pwd_s, "=");
+		for (i = 0; token_path != NULL; i++)
+		{
+			if (i != 0)
+				add_node(pwd, token_path);
+			token_path = strtok(NULL, "=");
+		}
 	}
 	free(old_pwd_s);
 	free(path);
@@ -69,13 +78,34 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 
 int _env(char *buffer)
 {
-	char *laenv = "env";
+	char *laenv = "env", *acomp = NULL;
+	int i = 0, k = 0, m = 0;
 	
-	if (strcmp(buffer, laenv) == 0 )
-	{			
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ')
+		{
+			k++;
+		}
+	}
+	acomp = (malloc(k + 1));
+	k = 0;
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ')
+		{
+			acomp[k] = buffer[i];
+			m++;
+		}
+	}
+	acomp[k] = '\0';
+	if (strcmp(buffer, laenv) == 0 && 
+			(buffer[m] == ' ' || buffer[m] == '\0'))
+	{	
+		free(acomp);
 		built_env();
 		return (1);
 	}
-
+	free(acomp);
 	return (0);	
 }

@@ -46,7 +46,7 @@ int check_files(tokeniza *directorys, tokeniza *input)
 	{
 			status = command(input, path_concat);
 			free(path_concat);
-		}
+	}
 	return (status);
 }
 

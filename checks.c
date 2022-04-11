@@ -65,8 +65,9 @@ void built_env()
 
 	while (environ[i])
 	{
-		write(1, environ[i], _strlen(environ[i]));
-		write(1, "\n", 1);
+		write(STDOUT_FILENO, "zz: ", 4);
+		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
+		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
 }
