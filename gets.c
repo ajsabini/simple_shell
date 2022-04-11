@@ -21,9 +21,8 @@ char *get_pwd()
 				return (copy);
 			}
 		}
-	copy = strdup(environ[i]);
 	}
-	return (copy);
+	return ("ERROR");
 }
 
 /**
@@ -47,9 +46,8 @@ char *get_oldpwd()
 				return (copy);
 			}
 		}
-		copy = strdup(environ[i]);
 	}
-	return (copy);
+	return ("ERROR");
 }
 
 /**
@@ -73,7 +71,6 @@ char *get_path()
 				return (copy);
 			}
 		}
-		copy = strdup(environ[i]);
 	}
-	return (copy);
+	return ("ERROR");
 }
