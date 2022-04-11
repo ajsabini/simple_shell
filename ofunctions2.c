@@ -69,17 +69,30 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 
 int _env(char *buffer)
 {
-	char *elenv = "env", *tok = NULL, *copia = NULL;
-
-	if (buffer[0] != '\0')
+	int i = 0, k = 0;
+	char *acomp = NULL;
+	
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ')	
+			k++;
+	}	
+	acomp = (malloc(k + 1));	
+	k = 0;
+	for (i = 0; buffer[i]; i++)
 	{	
-		copia = _strdup(buffer);
-		tok = strtok(copia, " ");
-		if (_strcmp(tok, elenv) == 0)
+		if (buffer[i] != ' ')
 		{
-			return (1);
+			acomp[k] = buffer[i];	
+			k++;
 		}
+    }
+	acomp[k] = '\0';	
+	if (strcmp(acomp, "env") == 0)
+	{
+		free(acomp);
+		return (1);
 	}
-	free(copia);
-	return (0);
+	free(acomp);
+	return (0);	
 }

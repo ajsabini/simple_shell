@@ -95,7 +95,7 @@ int _fexit(char *buffer)
 		}
 	}
 	acomp[k] = '\0';
-	if (_strcmp(acomp, "exit") == 0)
+	if (strcmp(acomp, "exit") == 0)
 	{
 		free(acomp);
 		return (1);

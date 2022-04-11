@@ -27,24 +27,17 @@ int main(void)
 				write(1, "\n", 1);
 			break;
 		}
-		/*printf("0- %s\n", buffer);*/
 		buffer[characters - 1] = '\0';
-		/*printf("1- %s\n", buffer);*/
 		change_tabs(buffer);
-		/*printf("2- %s\n", buffer);*/
 		exitstatus = built_exit(buffer);
-		/*printf("3- %s\n", buffer);*/
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
 			exit(status);
 		}
 		stenv = built_env(buffer);
-		/*printf("4- %s\n", buffer);*/
 		space = check_space(buffer);
-		/*printf("6- %s\n", buffer);*/
-		if(space != 0 && stenv != 1)
-		{	
-			/*printf("Buffer: %s\n", buffer);*/
+		if (space != 0 && stenv != 1)
+		{
 			tokenizer(buffer, &input, " ");
 			slash = check_slash(input->s);
 			if (slash == 1)
