@@ -24,7 +24,6 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 			token_path = strtok(NULL, "=");
 		}
 	}
-
 	path = get_path();
 	if (strcmp(path, "ERROR") != 0)
 	{
@@ -36,7 +35,6 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 			token_path = strtok(NULL, "=");
 		}
 	}
-
 	pwd_s = get_pwd();
 	if (strcmp(pwd_s, "ERROR") != 0)
 	{
@@ -78,9 +76,9 @@ void free_all(char *buffer, tokeniza *o_p, tokeniza *pw, tokeniza *direct)
 
 int _env(char *buffer)
 {
-	char *laenv = "env", *acomp = NULL;
+	char *laenv = "env", *acomp = NULL, *laenve = "env ";
 	int i = 0, k = 0, m = 0;
-	
+
 	for (i = 0; buffer[i]; i++)
 	{
 		if (buffer[i] != ' ')
@@ -99,13 +97,12 @@ int _env(char *buffer)
 		}
 	}
 	acomp[k] = '\0';
-	if (strcmp(buffer, laenv) == 0 && 
-			(buffer[m] == ' ' || buffer[m] == '\0'))
-	{	
+	if ((strcmp(acomp, laenv) == 0) || (strcmp(acomp, laenve) == 0))
+	{
 		free(acomp);
 		built_env();
 		return (1);
 	}
 	free(acomp);
-	return (0);	
+	return (0);
 }
