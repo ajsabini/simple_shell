@@ -21,6 +21,7 @@ int main(void)
 		do { characters = getline(&buffer, &size, stdin);
 		} while (buffer[0] == '\n' && characters > 1);
 		if (characters == -1)
+		{
 			if (isatty(STDIN_FILENO) == 1)
 				write(1, "\n", 1);
 			break;
