@@ -72,7 +72,7 @@ int _env(char *buffer)
 {
 	char *elenv = "env", *tok = NULL;
 
-	if (buffer)
+	if (buffer[0] != '\0')
 	{
 		tok = strtok(buffer, " ");
 		printf("%s\n", tok);

@@ -24,7 +24,7 @@ int main(void)
 		{	write(1, "\n", 1);
 			break;
 		}
-		buffer[0] = '\0';
+		buffer[_strlen(buffer - 1)] = '\0';
 		change_tabs(buffer);
 		exitstatus = built_exit(buffer);
 		if (exitstatus == 1)
@@ -34,7 +34,7 @@ int main(void)
 		built_env(buffer);
 		space = check_space(buffer);
 		slash = check_slash(buffer);
-		space != 0 && buffer[0] != '\0')
+		if(space != 0 && buffer[0] != '\0')
 		{	printf("aaaaaaaa");
 			tokenizer(buffer, &input, " ");
 			if (slash == 1)
