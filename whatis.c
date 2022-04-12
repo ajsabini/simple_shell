@@ -14,16 +14,16 @@ int check_directory(tokeniza *input)
 	stat = get_stat(input->s);
 	if (stat != 0)
 	{
-		status = 127;
 		perror("");
+		return (errno);
 	}
 	else
 	{
 		file = regular_file(input->s);
 		if (file == 0)
 		{
-			status = 126;
 			perror("");
+			return (errno);
 		}
 		else
 		{
@@ -48,8 +48,8 @@ int check_files(tokeniza *directorys, tokeniza *input)
 	path_concat = _concat(directorys, input);
 	if (strcmp(path_concat, "ERROR") == 0)
 	{	
-		status = 127;
 		perror("");
+		return (errno);
 	}
 	else
 	{
