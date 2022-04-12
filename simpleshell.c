@@ -30,8 +30,7 @@ int main(void)
 		exitstatus = built_exit(buffer);
 		if (exitstatus == 1)
 		{	free_all(buffer, old_pwd, pwd, directorys);
-			return (status);
-		}
+			return (status); }
 		space = check_space(buffer);
 		if (space != 0)
 		{	tokenizer(buffer, &input, " ");
@@ -44,8 +43,7 @@ int main(void)
 			{	dirs(&directorys, &pwd, &old_pwd);
 				status = check_files(directorys, input);
 			}
-			free_nodes(input), input = NULL;
-		}
+			free_nodes(input), input = NULL; }
 	}
 	free_all(buffer, old_pwd, pwd, directorys);
 	return (status);

@@ -31,6 +31,8 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 			if (i == 1)
 				tokenizer(token_path, directorys, ":");
 			token_path = strtok(NULL, "=");
+			if (token_path == NULL)
+				break;	
 		}
 	}
 	pwd_s = get_pwd();

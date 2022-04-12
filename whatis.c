@@ -47,7 +47,7 @@ int check_files(tokeniza *directorys, tokeniza *input)
 
 	path_concat = _concat(directorys, input);
 	if (strcmp(path_concat, "ERROR") == 0)
-	{	
+	{
 		perror("");
 		return (errno);
 	}
