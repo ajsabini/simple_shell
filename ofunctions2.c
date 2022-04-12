@@ -32,8 +32,7 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 				tokenizer(token_path, directorys, ":");
 			token_path = strtok(NULL, "=");
 			if (token_path == NULL)
-				break;	
-		}
+				break; }
 	}
 	pwd_s = get_pwd();
 	if (strcmp(pwd_s, "ERROR") != 0)
@@ -42,8 +41,7 @@ void dirs(tokeniza **directorys, tokeniza **pwd, tokeniza **old_pwd)
 		{
 			if (i != 0)
 				add_node(pwd, token_path);
-			token_path = strtok(NULL, "=");
-		}
+			token_path = strtok(NULL, "="); }
 	}
 	if (strcmp(old_pwd_s, "ERROR") != 0)
 		free(old_pwd_s);

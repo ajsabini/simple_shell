@@ -53,7 +53,7 @@ void add_node(tokeniza **head, char *s)
 void tokenizer(char *env, tokeniza **directorys, const char *delim)
 {
 	char *path = NULL;
-	
+
 	path = strtok(env, delim);
 	while (path != NULL)
 	{
